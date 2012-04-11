@@ -1,0 +1,7 @@
+export ARCHFLAGS='-arch x86_64'
+
+export PATH=~/bin:/usr/local/bin:/usr/libexec:$PATH
+export PATH=/Applications/Emacs.app/Contents/MacOS:/Applications/Emacs.app/Contents/MacOS/bin:$PATH
+
+export JRUBY_OPTS='--1.9'
+
