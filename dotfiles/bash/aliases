@@ -1,3 +1,8 @@
-alias ls='ls -alh'
-alias mongodb_start="mongod run --config /usr/local/Cellar/mongodb/1.8.1-x86_64/mongod.conf &"
+alias ls='ls -alGh'
 alias be='bundle exec'
+alias reload="source ~/.bashrc"
+alias ll="ls -alh"
+
+alias tb_run="torquebox run"
+alias tb_stop="sh ~/.rvm/gems/jruby-1.6.8@global/gems/torquebox-server-2.1.2-java/jboss/bin/jboss-cli.sh --connect command=:shutdown"
+

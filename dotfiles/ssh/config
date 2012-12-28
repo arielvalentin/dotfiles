@@ -1,4 +1,9 @@
-Host myserver
-  HostName myserver.example.com
-  User myuser
-  Port 2233
+Host gordon
+  User midpoint
+  Hostname gordon.skarven.net
+  ForwardAgent true
+Host avalentin
+  User midpoint
+  Hostname avalentin.skarven.net
+  ForwardAgent true
+

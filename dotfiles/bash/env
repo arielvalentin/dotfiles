@@ -5,3 +5,11 @@ export PATH=/Applications/Emacs.app/Contents/MacOS:/Applications/Emacs.app/Conte
 
 export JRUBY_OPTS='--1.9'
 
+#export TORQUEBOX_HOME=~/torquebox-2.1.2
+#export JBOSS_HOME=$TORQUEBOX_HOME/jboss
+#export JRUBY_HOME=$TORQUEBOX_HOME/jruby
+#export PATH=$JRUBY_HOME/bin:$PATH
+
+export RBENV_ROOT=/usr/local/opt/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export RBENV_VERSION=jruby-1.7.1
