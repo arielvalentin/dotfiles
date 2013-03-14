@@ -1,4 +1,4 @@
-export ARCHFLAGS='-arch x86_64'
+#export ARCHFLAGS='-arch x86_64'
 
 export PATH=~/bin:/usr/local/bin:/usr/libexec:$PATH
 
