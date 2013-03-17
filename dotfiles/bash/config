@@ -38,4 +38,4 @@ BMAGENTA='\e[45m'
 BCYAN='\e[46m'
 BWHITE='\e[47m'
 
-export PS1="\n\u@\h:\w \[$ERED\]\$(vcprompt)\[$NO_COLOR\] \n→ "
+export PS1="\n\u@\h:\w \n\[$ERED\]\$(vcprompt)\[$NO_COLOR\] \n→ "
