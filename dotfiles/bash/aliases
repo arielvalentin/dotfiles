@@ -1,8 +1,6 @@
 alias ls='ls -alGh'
 alias be='bundle exec'
-alias reload="source ~/.bashrc"
+alias reload="source ~/bin/bashrc"
 alias ll="ls -alh"
 
-alias tb_run="torquebox run"
-alias tb_stop="sh ~/.rvm/gems/jruby-1.6.8@global/gems/torquebox-server-2.1.2-java/jboss/bin/jboss-cli.sh --connect command=:shutdown"
 
