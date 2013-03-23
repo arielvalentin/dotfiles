@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+command = ARGV[0] 
+
+if %w(start stop restart).include?(command)
+  full_command = %Q{pg_ctl #{command} -m immediate -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log}
+  system(full_command)
+else
+  puts("Usage: pg_start [start|stop|restart]")
+  exit -1
+end
+
+
+
+
