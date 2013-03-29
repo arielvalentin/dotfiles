@@ -1,0 +1,8 @@
+#!/bin/bash
+
+bundle init
+bundle config --local bin bin
+bundle config --local path vendor/bundle
+echo "gem 'rake'" >> Gemfile
+bundle package --all
+bundle install --local --binstubs --standalone
