@@ -14,4 +14,7 @@ Host avalentin
   User midpoint
   Hostname avalentin.skarven.net
   ForwardAgent true
-
+Host ras21.vm
+  User e3
+  Hostname ras21.vm.skarven.net
+  ForwardAgent true
