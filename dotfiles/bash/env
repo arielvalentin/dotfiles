@@ -4,3 +4,5 @@ export RBENV_VERSION=jruby-1.7.4
 
 export PATH=~/bin:/usr/local/bin:/usr/libexec:$PATH
 
+export JBOSS_HOME=/usr/local/Cellar/rbenv/0.4.0/versions/jruby-1.7.4/lib/ruby/gems/shared/gems/torquebox-server-2.3.2-java/jboss
+
