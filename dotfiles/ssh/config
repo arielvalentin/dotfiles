@@ -11,7 +11,7 @@ Host marzipan
   Hostname marzipan.skarven.net
   ForwardAgent true
 Host avalentin
-  User midpoint
+  User avalentin
   Hostname avalentin.skarven.net
   ForwardAgent true
 Host ras21.vm

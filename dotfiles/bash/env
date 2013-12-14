@@ -2,7 +2,9 @@ export RBENV_ROOT=/usr/local/opt/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export RBENV_VERSION=jruby-1.7.4
 
-export PATH=~/bin:/usr/local/bin:/usr/libexec:$PATH
 
-export JBOSS_HOME=/usr/local/Cellar/rbenv/0.4.0/versions/jruby-1.7.4/lib/ruby/gems/shared/gems/torquebox-server-2.3.2-java/jboss
+export JBOSS_HOME=/usr/local/Cellar/rbenv/0.4.0/versions/jruby-1.7.4/lib/ruby/gems/shared/gems/torquebox-server-3.0.0-java/jboss
 
+export MVN_HOME=~/Software/apache-maven-3.0.5/
+
+export PATH=~/bin:/usr/local/bin:/usr/libexec:$MVN_HOME/bin:$PATH
