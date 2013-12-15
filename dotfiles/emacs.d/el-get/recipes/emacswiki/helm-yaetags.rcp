@@ -1,0 +1,5 @@
+(:name helm-yaetags
+:auto-generated t
+:type emacswiki
+:description "Yet another etags interface with helm."
+:website "https://raw.github.com/emacsmirror/emacswiki.org/master/helm-yaetags.el")

@@ -1,0 +1,5 @@
+(:name Rule34
+:auto-generated t
+:type emacswiki
+:description ""If it exists, there's an Emacs mode for it. If there isn't, someone will make one.""
+:website "https://raw.github.com/emacsmirror/emacswiki.org/master/Rule34.el")
