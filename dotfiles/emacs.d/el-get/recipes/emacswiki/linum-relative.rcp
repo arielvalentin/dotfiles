@@ -1,5 +1,0 @@
-(:name linum-relative
-:auto-generated t
-:type emacswiki
-:description "display relative line number in emacs."
-:website "https://raw.github.com/emacsmirror/emacswiki.org/master/linum-relative.el")

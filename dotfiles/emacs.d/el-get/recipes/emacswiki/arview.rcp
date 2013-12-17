@@ -1,5 +1,0 @@
-(:name arview
-:auto-generated t
-:type emacswiki
-:description "extract and view archives in the temporary directory"
-:website "https://raw.github.com/emacsmirror/emacswiki.org/master/arview.el")
