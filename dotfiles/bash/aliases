@@ -1,6 +1,5 @@
-alias ls='ls -alGh'
 alias be='bundle exec'
 alias reload="source ~/bin/bashrc"
-alias ll="ls -alh"
+alias ll="ls -alGh"
 alias bake='./bin/rake'
 

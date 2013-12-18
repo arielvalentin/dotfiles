@@ -1,6 +1,7 @@
-export MVN_HOME=~/Software/apache-maven-3.0.5/
-
+export MVN_HOME=$HOME/Software/apache-maven-3.0.5/
+export JBOSS_HOME=$HOME/Software/torquebox-3.0.1/jboss
 export PATH=~/bin:/usr/local/bin:/usr/libexec:$MVN_HOME/bin:$PATH
 
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
+

@@ -18,3 +18,7 @@ Host ras21.vm
   User e3
   Hostname ras21.vm.skarven.net
   ForwardAgent true
+Host strongbad
+  User nimdadod
+  Hostname strongbad.vm.skarven.net
+  ForwardAgent true
