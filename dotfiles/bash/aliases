@@ -2,4 +2,4 @@ alias be='bundle exec'
 alias reload="source ~/bin/bashrc"
 alias ll="ls -alGh"
 alias bake='./bin/rake'
-
+alias update_ctags='ctags -e -a -R --languages=Ruby .'
