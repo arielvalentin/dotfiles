@@ -1,9 +1,0 @@
-;;; -*- coding: utf-8 -*-
-(("/Users/arielvalentin/.emacs.d/elpa/dash-20131223.933/dash-autoloads.el" . 169)
- ("/Users/arielvalentin/.emacs.d/elpa/minitest-20131217.735/minitest-autoloads.el" . 412)
- ("/Users/arielvalentin/dev/repos/sinatra-example/example-client/example-client.gemspec" . 853)
- ("/Users/arielvalentin/dev/repos/sinatra-example/example-client/lib/example/client/accounts_gateway.rb" . 538)
- ("/Users/arielvalentin/dev/repos/sinatra-example/lib/example/accounts_repository.rb" . 331)
- ("/Users/arielvalentin/dev/repos/sinatra-example/test/integration/example/web_test.rb" . 996)
- ("/Users/arielvalentin/dev/repos/sinatra-example/test/unit/example/accounts_repository_test.rb" . 1308)
- ("/Users/arielvalentin/dev/repos/sinatra-example/vendor/bundle/gems/factory_girl-4.3.0/lib/factory_girl/strategy/stub.rb" . 693))
