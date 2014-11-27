@@ -2,9 +2,10 @@ if [ -f /usr/libexec/java_home ]; then
   export JAVA_HOME=`/usr/libexec/java_home`
   export PATH=$JAVA_HOME/bin:$PATH
 fi
-export M2_HOME=$HOME/Software/apache-maven-3.1.0/
-export JBOSS_HOME=$HOME/Software/torquebox-3.0.1/jboss
-export PATH=~/bin:/usr/local/bin:/usr/libexec:$M2_HOME/bin:$PATH
+export M2_HOME=$HOME/Software/apache-maven-3.2.1
+export TORQUEBOX_HOME=/opt/torquebox/current
+export JBOSS_HOME=$TORQUEBOX_HOME/jboss
+export PATH=~/bin:/usr/local/bin:/usr/libexec:$M2_HOME/bin:$PATH:$JBOSS_HOME/bin
 
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
