@@ -22,3 +22,13 @@ Host strongbad
   User nimdadod
   Hostname strongbad.vm.skarven.net
   ForwardAgent true
+Host lab76
+  User ariel.s.valentin
+  Hostname proxy.lab76.org
+  ForwardAgent true
+  ServerAliveInterval 60
+Host ide20
+  User ariel.s.valentin
+  Hostname proxy.ide20.lab76.org
+  ForwardAgent true
+  ServerAliveInterval 60
