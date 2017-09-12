@@ -1,4 +1,0 @@
-#!/bin/bash
-
-bundle package --all
-bundle install --local --binstubs --standalone
