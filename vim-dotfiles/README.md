@@ -1,7 +1,4 @@
-# Gust Dotfiles
-
-## About
-Dotfile repository for Gust development machines. Currently only supports vim, but may eventually be used to manage others (i.e. .bashrc, .gitconfig, etc.).
+# VIM Dotfiles
 
 ## Usage
 ### Install
