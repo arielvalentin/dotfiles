@@ -82,7 +82,6 @@ set sw=2 sts=2 ts=2                             " 2 spaces
 set swapfile                                    " Keep swapfiles
 set directory=~/.vim-tmp,~/tmp,/var/tmp,/tmp
 set backupdir=~/.vim-tmp,~/tmp,/var/tmp,/tmp
-set t_Co=256                                    " Use 256 colors
 set textwidth=0                                 " Do not break lines
 set ttimeoutlen=100                             " Without this entering normal mode takes forever
 set wildmenu                                    " Autocomplete filenames
@@ -99,13 +98,21 @@ set nowrap                                        " Turn off line wrapping
 " Misc
 "#############################################################################
 
+set t_Co=256
+syntax enable
+let g:solarized_termtrans = 1
+let g:solarized_termcolors=256
+let g:solarized_visibility="high"
+let g:solarized_contrast="high"
+set background=dark
+colorscheme solarized
+
 " Enable bundled matchit macros
 runtime macros/matchit.vim
 
 filetype on
 filetype plugin on
 filetype plugin indent on
-syntax on
 let mapleader = ","
 let maplocalleader = ";"
 
@@ -124,11 +131,6 @@ let g:ctrlp_user_command = {
 let NERDSpaceDelims = 1
 
 let ruby_operators=1
-
-let g:solarized_termcolors=256
-let g:solarized_visibility="high"
-let g:solarized_contrast="high"
-
 
 let g:testify_launcher = "Dispatch "
 let g:testify_runners = {
@@ -281,5 +283,3 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Word wrap without line breaks for text files
 au BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist textwidth=0 wrapmargin=0
-
-colorscheme solarized
