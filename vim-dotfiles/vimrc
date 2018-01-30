@@ -132,11 +132,6 @@ let NERDSpaceDelims = 1
 
 let ruby_operators=1
 
-let g:testify_launcher = "Dispatch "
-let g:testify_runners = {
-            \ 'cucumber': 'zeus cucumber ',
-            \ 'rspec': 'zeus rspec ' }
-
 let g:auto_save = 1
 let g:auto_save_no_updatetime = 1
 let g:auto_save_in_insert_mode = 0
@@ -184,8 +179,7 @@ vmap <tab> >gv
 vmap <s-tab> <gv
 
 " ctags again with gemhome added
-map <leader>rt :!/usr/local/bin/ctags -R --exclude=.git --exclude=log * `rvm gemhome`/*<CR>
-map <leader>rT :!rdoc -f tags -o tags * `rvm gemhome` --exclude=.git --exclude=log
+map <leader>rt :Dispatch ctags -R --exclude=.git --exclude=log * `rvm gemhome`/*<CR>
 
 " Comment/uncomment lines
 map <leader>/ <plug>NERDCommenterToggle
@@ -223,11 +217,6 @@ nnoremap <C-l> <C-w>l
 nnoremap Q @q
 vnoremap Q :norm @q<cr>
 
-" Run tests
-map <leader>t :wa <bar> TestifyRunFocused<CR>
-nmap <leader>T :wa <bar> TestifyRunFile<CR>
-nmap <CR><CR> :wa <bar> TestifyRunFile<CR>
-
 " Toggle paste/nopaste mode
 map <F2> :set paste!<CR>
 
@@ -240,37 +229,19 @@ map <F9> :StarscopeUpdate<cr>
 " Call the 'alternative' script
 nnoremap <Leader>A :Alternative<CR>
 
-"Copy yml key under the cursor"
-nnoremap <Leader>k :call YMLToKey()<CR>
-function YMLToKey()
-  execute '!~/Dropbox/developer_stuff/bin/yml_to_key key ' . expand('%:p') . ":" . line(".") . ' | xargs echo -n | pbcopy'
-endfunction
-
 "#############################################################################
 " Autocommands
 "#############################################################################
-
-" Strip trailing whitespace for code files on save
-function! StripTrailingWhitespace()
-  let save_cursor = getpos(".")
-  %s/\s\+$//e
-  call setpos('.', save_cursor)
-endfunction
-autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
 
 " Highlight Ruby files
 au BufRead,BufNewFile *.thor set filetype=ruby
 au BufRead,BufNewFile *.god set filetype=ruby
 au BufRead,BufNewFile Gemfile* set filetype=ruby
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
-au BufRead,BufNewFile soloistrc set filetype=ruby
 au BufRead,BufNewFile *_spec.rb set syntax=ruby
 
 " Highlight JSON files as javascript
 autocmd BufRead,BufNewFile *.json set filetype=javascript
-
-" Highlight Jasmine fixture files as HTML
-autocmd BufRead,BufNewFile *.jasmine_fixture set filetype=html
 
 " When viewing a git tree or blob, quickly move up to view parent
 autocmd User fugitive
