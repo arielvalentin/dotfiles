@@ -2,9 +2,6 @@
 " Install / load plugins
 "#############################################################################
 
-" Required for Vundle
-filetype off
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'AndrewRadev/writable_search.vim'            " Grep for something, then write the original files directly through the search results
@@ -64,11 +61,13 @@ call plug#end()
 " Settings
 "#############################################################################
 set autoread                                    " Detect file changes refresh buffer
-set background=dark                             " Dark colored background
 set backspace=indent,eol,start                  " Backspace of newlines
 set colorcolumn=79                              " Show vertical column
 set cursorline                                  " Highlight current line
-set expandtab
+
+" Set tabs to 2 spaces
+set sw=2 sts=2 ts=2 expandtab
+
 set formatoptions=qrn1                          " http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
 set hidden                                      " allow buffers to be hidden
 set history=1024                                " History size
@@ -76,8 +75,6 @@ set hlsearch                                    " Highlight matches to recent se
 set ignorecase                                  " Ignore case when searching
 set incsearch                                   " Use incremental search
 set laststatus=2                                " Use two rows for status line
-set list                                        " Show invisible chars 
-set listchars=tab:»·,trail:·                    " Show tabs and trailing whitespace only
 set nocompatible                                " Not compatible w/ vi
 set number                                      " Display line numbers
 set ruler                                       " Show line and column number of cursor
@@ -86,10 +83,7 @@ set splitright                                  " open new vertical buffers on t
 set splitbelow                                  " ...and horizontal ones below
 set showmatch                                   " Show matching braces
 set smartcase                                   " Turn case sensitive search back on in certain cases
-set sw=2 sts=2 ts=2                             " 2 spaces
-set swapfile                                    " Keep swapfiles
-set directory=~/.vim-tmp,~/tmp,/var/tmp,/tmp
-set backupdir=~/.vim-tmp,~/tmp,/var/tmp,/tmp
+set noswapfile                                    " ditch swapfiles
 set textwidth=0                                 " Do not break lines
 set ttimeoutlen=100                             " Without this entering normal mode takes forever
 set wildmenu                                    " Autocomplete filenames
@@ -102,6 +96,8 @@ set wildignore+=public/images/**
 set wildignore+=vendor/**
 set nowrap                                        " Turn off line wrapping
 
+set rtp+=/usr/local/opt/fzf
+
 "#############################################################################
 " Misc
 "#############################################################################
@@ -112,7 +108,7 @@ let g:solarized_termtrans = 1
 let g:solarized_termcolors=256
 let g:solarized_visibility="high"
 let g:solarized_contrast="high"
-set background=light
+set background=dark
 colorscheme solarized
 
 " Enable bundled matchit macros
@@ -131,10 +127,10 @@ let g:airline_powerline_fonts = 1
 
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 let g:ctrlp_user_command = {
-    \ 'types': {
-    \   1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others']
-    \ },
-    \ 'fallback': 'ag %s -l --nocolor -g ""' }
+      \ 'types': {
+      \   1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others']
+      \ },
+      \ 'fallback': 'ag %s -l --nocolor -g ""' }
 
 let NERDSpaceDelims = 1
 
@@ -177,7 +173,7 @@ noremap ,a :Ag<CR>
 nnoremap <Leader>f :CtrlP<cr>
 
 " split pane shortcut
-nnoremap <Leader>v :vs<cr>
+" nnoremap <Leader>v :vs<cr>
 
 " Open Fugitive status buffer
 nnoremap <Leader>g :Gstatus<CR>
@@ -190,8 +186,8 @@ map <leader>qc :cclose<CR>
 vmap <tab> >gv
 vmap <s-tab> <gv
 
-" ctags again with gemhome added
-map <leader>rt :Dispatch ctags -R --exclude=.git --exclude=log * `rvm gemhome`/*<CR>
+" ctags again 
+map <leader>rt :Dispatch ctags -R --exclude=.git --exclude=log * <CR>
 
 " Comment/uncomment lines
 map <leader>/ <plug>NERDCommenterToggle
@@ -200,24 +196,32 @@ map <leader>/ <plug>NERDCommenterToggle
 map <leader>C :let @* = expand("%").":".line(".")<CR>:echo "Copied: ".expand("%").":".line(".")<CR>
 
 " Delete focused buffer without losing split
-nnoremap <C-c> :bp\|bd #<CR>
+" nnoremap <C-c> :bp\|bd #<CR>
 
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>""
 
 " Quickly switch to alternate file
-nnoremap <Leader><Leader> <c-^>
+" nnoremap <Leader><Leader> <c-^>
 
 " Auto-indent whole file
 nmap <leader>=  gg=G``
 
+" Show invisible chars 
+set list
+set listchars=tab:▸\ ,trail:.
+nmap <leader>l :set list!<CR>
+"Invisible character colors 
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
 " Map ,e and to open files in the same directory as the current file
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
+" cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" map <leader>e :edit %%
 
 " Map ,s to search and replace"
-noremap <leader>s :%s/
+" noremap <leader>s :%s/
 
 " Make it easier to switch between windows
 nnoremap <C-h> <C-w>h
@@ -236,34 +240,52 @@ map <F2> :set paste!<CR>
 map <F8> :TagbarToggle<CR>
 
 " Regenerate ctags and cscope.out using starscope gem
-map <F9> :StarscopeUpdate<cr>
+" map <F9> :StarscopeUpdate<cr>
 
 " Call the 'alternative' script
-nnoremap <Leader>A :Alternative<CR>
+" nnoremap <Leader>A :Alternative<CR>
 
 "#############################################################################
 " Autocommands
 "#############################################################################
 
-" Highlight Ruby files
-au BufRead,BufNewFile *.thor set filetype=ruby
-au BufRead,BufNewFile *.god set filetype=ruby
-au BufRead,BufNewFile Gemfile* set filetype=ruby
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
-au BufRead,BufNewFile *_spec.rb set syntax=ruby
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " Enable file type detection
+  filetype on
 
-autocmd FileType javascript set formatprg=prettier\ --stdin
-" Highlight JSON files as javascript
-autocmd BufRead,BufNewFile *.json set filetype=javascript
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
-" When viewing a git tree or blob, quickly move up to view parent
-autocmd User fugitive
-  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-  \   nnoremap <buffer> .. :edit %:h<CR> |
-  \ endif
+  " Used to format modern JS https://github.com/prettier/prettier
+  autocmd FileType javascript set formatprg=prettier\ --stdin
 
-" Auto-clean fugitive buffers
-autocmd BufReadPost fugitive://* set bufhidden=delete
+  " Word wrap without line breaks for text files
+  autocmd BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist textwidth=0 wrapmargin=0
 
-" Word wrap without line breaks for text files
-au BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist textwidth=0 wrapmargin=0
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+  " XML syntax
+  autocmd BufNewFile,BufRead *.rss setfiletype xml
+
+  " Ruby syntax
+  autocmd BufRead,BufNewFile *.thor set filetype=ruby
+  autocmd BufRead,BufNewFile *.god set filetype=ruby
+  autocmd BufRead,BufNewFile Gemfile* set filetype=ruby
+  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+  autocmd BufRead,BufNewFile *_spec.rb set syntax=ruby
+  
+  " JavaScript syntax
+  autocmd BufRead,BufNewFile *.json set filetype=javascript
+
+  " When viewing a git tree or blob, quickly move up to view parent
+  autocmd User fugitive
+        \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+        \   nnoremap <buffer> .. :edit %:h<CR> |
+        \ endif
+
+  " Auto-clean fugitive buffers
+  autocmd BufReadPost fugitive://* set bufhidden=delete
+endif
