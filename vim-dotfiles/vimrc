@@ -16,13 +16,13 @@ Plug 'ervandew/supertab'                          " Perform all your vim insert 
 Plug 'garbas/vim-snipmate'                        " handy code snippets
 Plug 'godlygeek/csapprox'                         " dependency for Solarized
 Plug 'godlygeek/tabular'                          " dependency of vim-markdown
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'                         " vim-snipmate default snippets
 Plug 'kana/vim-textobj-user'                      " dependency for rubyblock
 Plug 'majutsushi/tagbar'                          " displays tags in a window, ordered by scope
 Plug 'nelstrom/vim-textobj-rubyblock'             " custom text object for selecting Ruby blocks
 Plug 'pangloss/vim-javascript'                    " Vastly improved Javascript indentation and syntax support
 Plug 'plasticboy/vim-markdown'                    " markdown support; requires godlygeek/tabular
-Plug 'rking/ag.vim'                               " plugin for the_silver_searcher
 Plug 'scrooloose/nerdcommenter'                   " quickly (un)comment lines
 Plug 'scrooloose/nerdtree'                        " A tree explorer plugin
 Plug 'sjl/vitality.vim'                           " Make Vim play nicely with iTerm 2 and tmux
@@ -54,6 +54,7 @@ Plug 'artnez/vim-wipeout'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
 
@@ -112,6 +113,11 @@ let g:solarized_contrast="high"
 set background=dark
 colorscheme solarized
 
+" Limelight is unable to calculate colors in iTerm2 with Solarized. https://github.com/junegunn/limelight.vim/issues/27
+" This configuration gives limelight some clues
+let g:limelight_conceal_ctermfg = 245  " Solarized Base1
+let g:limelight_conceal_guifg = '#8a8a8a'  " Solarized Base1
+
 " Enable bundled matchit macros
 runtime macros/matchit.vim
 
@@ -125,13 +131,6 @@ let mapleader = ","
 " Plugin configuration
 "#############################################################################
 let g:airline_powerline_fonts = 1
-
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
-let g:ctrlp_user_command = {
-      \ 'types': {
-      \   1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others']
-      \ },
-      \ 'fallback': 'ag %s -l --nocolor -g ""' }
 
 let NERDSpaceDelims = 1
 
