@@ -2,7 +2,7 @@
 " Install / load plugins
 "#############################################################################
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'AndrewRadev/writable_search.vim'            " Grep for something, then write the original files directly through the search results
 Plug 'DataWraith/auto_mkdir'                      " Allows you to save files into directories that do not exist yet
@@ -41,7 +41,7 @@ Plug 'tpope/vim-unimpaired'                       " pairs of handy bracket mappi
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'                          " packaged w/ vim but this is latest and greatest
 Plug 'vim-scripts/regreplop.vim'                  " operator to replace motion/visual with a register
-Plug 'vim-scripts/vim-auto-save'                  " automatically save changes to disk
+Plug '907th/vim-auto-save'                  " automatically save changes to disk
 Plug 'lmeijvogel/vim-yaml-helper'                 " navigate yaml files more easily
 Plug 'aperezdc/vim-template'                      " templates by file type
 Plug 'vim-syntastic/syntastic'
@@ -55,6 +55,8 @@ Plug 'artnez/vim-wipeout'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'janko-m/vim-test'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -105,6 +107,7 @@ set rtp+=/usr/local/opt/fzf
 "#############################################################################
 
 set t_Co=256
+set encoding=utf-8
 syntax enable
 let g:solarized_termtrans = 1
 let g:solarized_termcolors=256
@@ -112,6 +115,15 @@ let g:solarized_visibility="high"
 let g:solarized_contrast="high"
 set background=dark
 colorscheme solarized
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Limelight is unable to calculate colors in iTerm2 with Solarized. https://github.com/junegunn/limelight.vim/issues/27
 " This configuration gives limelight some clues
@@ -130,17 +142,15 @@ let mapleader = ","
 "#############################################################################
 " Plugin configuration
 "#############################################################################
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 let NERDSpaceDelims = 1
 
 let ruby_operators=1
 
 let g:auto_save = 1
-let g:auto_save_no_updatetime = 1
-let g:auto_save_in_insert_mode = 0
 
-let g:templates_directory = "~/.vim/templates/"
+let g:templates_directory = "~/.config/nvim/templates/"
 
 let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
@@ -167,10 +177,11 @@ map \ :NERDTreeToggle<CR>
 map \| :NERDTreeFind<CR>
 
 " Search using Ag
-noremap ,a :Ag<CR>
+" noremap ,a :Ag<CR>
 
-" Ctrl-P Mapping
+"
 nnoremap <Leader>f :FZF<cr>
+nnoremap <Leader>b :Buffers<cr>
 
 " split pane shortcut
 " nnoremap <Leader>v :vs<cr>
@@ -187,7 +198,7 @@ vmap <tab> >gv
 vmap <s-tab> <gv
 
 " ctags again 
-map <leader>rt :Dispatch ctags -R --exclude=.git --exclude=log * <CR>
+" map <leader>rt :Dispatch ctags -R * <CR>
 
 " Comment/uncomment lines
 map <leader>/ <plug>NERDCommenterToggle
@@ -271,7 +282,7 @@ if has("autocmd")
   " Ruby syntax
   autocmd BufRead,BufNewFile *.thor set filetype=ruby
   autocmd BufRead,BufNewFile *.god set filetype=ruby
-  autocmd BufRead,BufNewFile Gemfile* set filetype=ruby
+  autocmd BufRead,BufNewFile Gemfile set filetype=ruby
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
   autocmd BufRead,BufNewFile *_spec.rb set syntax=ruby
   
@@ -286,4 +297,19 @@ if has("autocmd")
 
   " Auto-clean fugitive buffers
   autocmd BufReadPost fugitive://* set bufhidden=delete
+
+  let test#strategy = "dispatch"
+  nmap <silent> <CR><CR> :TestNearest<CR>
+  nmap <silent> tf :TestFile<CR>
+  nmap <silent> ts :TestSuite<CR>
+  nmap <silent> tl :TestLast<CR>
+  nmap <silent> tg :TestVisit<CR>
+
+  " Strip trailing whitespace for code files on save
+  function! StripTrailingWhitespace()
+    let save_cursor = getpos(".")
+    %s/\s\+$//e
+    call setpos('.', save_cursor)
+  endfunction
+  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
 endif
