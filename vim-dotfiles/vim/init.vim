@@ -148,7 +148,8 @@ let NERDSpaceDelims = 1
 
 let ruby_operators=1
 
-let g:auto_save = 1
+let g:auto_save = 0
+au CursorHold,InsertLeave * nested update
 
 let g:templates_directory = "~/.config/nvim/templates/"
 
@@ -260,56 +261,52 @@ map <F8> :TagbarToggle<CR>
 " Autocommands
 "#############################################################################
 
-" Only do this part when compiled with support for autocommands
-if has("autocmd")
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+" Used to format modern JS https://github.com/prettier/prettier
+autocmd FileType javascript set formatprg=prettier\ --stdin
 
-  " Used to format modern JS https://github.com/prettier/prettier
-  autocmd FileType javascript set formatprg=prettier\ --stdin
+" Word wrap without line breaks for text files
+autocmd BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist textwidth=0 wrapmargin=0
 
-  " Word wrap without line breaks for text files
-  autocmd BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist textwidth=0 wrapmargin=0
+" Syntax of these languages is fussy over tabs Vs spaces
+autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-  " Syntax of these languages is fussy over tabs Vs spaces
-  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" XML syntax
+autocmd BufNewFile,BufRead *.rss setfiletype xml
 
-  " XML syntax
-  autocmd BufNewFile,BufRead *.rss setfiletype xml
+" Ruby syntax
+autocmd BufRead,BufNewFile *.thor set filetype=ruby
+autocmd BufRead,BufNewFile *.god set filetype=ruby
+autocmd BufRead,BufNewFile Gemfile set filetype=ruby
+autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
+autocmd BufRead,BufNewFile *_spec.rb set syntax=ruby
 
-  " Ruby syntax
-  autocmd BufRead,BufNewFile *.thor set filetype=ruby
-  autocmd BufRead,BufNewFile *.god set filetype=ruby
-  autocmd BufRead,BufNewFile Gemfile set filetype=ruby
-  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-  autocmd BufRead,BufNewFile *_spec.rb set syntax=ruby
-  
-  " JavaScript syntax
-  autocmd BufRead,BufNewFile *.json set filetype=javascript
+" JavaScript syntax
+autocmd BufRead,BufNewFile *.json set filetype=javascript
 
-  " When viewing a git tree or blob, quickly move up to view parent
-  autocmd User fugitive
-        \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-        \   nnoremap <buffer> .. :edit %:h<CR> |
-        \ endif
+" When viewing a git tree or blob, quickly move up to view parent
+autocmd User fugitive
+      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+      \   nnoremap <buffer> .. :edit %:h<CR> |
+      \ endif
 
-  " Auto-clean fugitive buffers
-  autocmd BufReadPost fugitive://* set bufhidden=delete
+" Auto-clean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
-  let test#strategy = "dispatch"
-  nmap <silent> <CR><CR> :TestNearest<CR>
-  nmap <silent> tf :TestFile<CR>
-  nmap <silent> ts :TestSuite<CR>
-  nmap <silent> tl :TestLast<CR>
-  nmap <silent> tg :TestVisit<CR>
+let test#strategy = "dispatch"
+nmap <silent> <CR><CR> :TestNearest<CR>
+nmap <silent> tf :TestFile<CR>
+nmap <silent> ts :TestSuite<CR>
+nmap <silent> tl :TestLast<CR>
+nmap <silent> tg :TestVisit<CR>
 
-  " Strip trailing whitespace for code files on save
-  function! StripTrailingWhitespace()
-    let save_cursor = getpos(".")
-    %s/\s\+$//e
-    call setpos('.', save_cursor)
-  endfunction
-  autocmd BufWritePre *.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
-endif
+" Strip trailing whitespace for code files on save
+function! StripTrailingWhitespace()
+  let save_cursor = getpos(".")
+  %s/\s\+$//e
+  call setpos('.', save_cursor)
+endfunction
+autocmd BufWritePre *.rake,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
