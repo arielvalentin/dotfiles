@@ -21,8 +21,6 @@ Plug 'honza/vim-snippets'                         " vim-snipmate default snippet
 Plug 'kana/vim-textobj-user'                      " dependency for rubyblock
 Plug 'majutsushi/tagbar'                          " displays tags in a window, ordered by scope
 Plug 'nelstrom/vim-textobj-rubyblock'             " custom text object for selecting Ruby blocks
-Plug 'pangloss/vim-javascript'                    " Vastly improved Javascript indentation and syntax support
-Plug 'plasticboy/vim-markdown'                    " markdown support; requires godlygeek/tabular
 Plug 'scrooloose/nerdcommenter'                   " quickly (un)comment lines
 Plug 'scrooloose/nerdtree'                        " A tree explorer plugin
 Plug 'sjl/vitality.vim'                           " Make Vim play nicely with iTerm 2 and tmux
@@ -32,14 +30,13 @@ Plug 'tpope/vim-bundler'                          " makes source navigation of b
 Plug 'tpope/vim-dispatch'                         " Asynchronous build and test dispatcher
 Plug 'tpope/vim-endwise'                          " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Plug 'tpope/vim-fugitive'                         " Git plugin
-Plug 'tpope/vim-haml'                             " HAML support
 Plug 'tpope/vim-projectionist'                    " project configuration
 Plug 'tpope/vim-rake'                             " makes Ruby project navigation easier for non-Rails projects
 Plug 'tpope/vim-repeat'                           " Enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-surround'                         " makes working w/ quotes, braces,etc. easier
 Plug 'tpope/vim-unimpaired'                       " pairs of handy bracket mappings
 Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'                          " packaged w/ vim but this is latest and greatest
+Plug 'sheerun/vim-polyglot'                       " Provides plugins for multiple dynamic syntax highlighters
 Plug 'vim-scripts/regreplop.vim'                  " operator to replace motion/visual with a register
 Plug '907th/vim-auto-save'                  " automatically save changes to disk
 Plug 'lmeijvogel/vim-yaml-helper'                 " navigate yaml files more easily
@@ -113,7 +110,7 @@ let g:solarized_termtrans = 1
 let g:solarized_termcolors=256
 let g:solarized_visibility="high"
 let g:solarized_contrast="high"
-set background=dark
+set background=light
 colorscheme solarized
 
 set statusline+=%#warningmsg#
@@ -145,6 +142,7 @@ let mapleader = ","
 " let g:airline_powerline_fonts = 1
 
 let NERDSpaceDelims = 1
+let NERDTreeShowHidden=1
 
 let ruby_operators=1
 
@@ -255,7 +253,23 @@ map <F8> :TagbarToggle<CR>
 " map <F9> :StarscopeUpdate<cr>
 
 " Call the 'alternative' script
-" nnoremap <Leader>A :Alternative<CR>
+" nnoremap <Leader>a <CR>
+let g:rails_projections = {
+      \  "app/controllers/*_controller.rb": {
+      \      "test": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \      ],
+      \      "alternate": [
+      \        "spec/requests/{}_controller_spec.rb",
+      \        "spec/controllers/{}_controller_spec.rb",
+      \      ],
+      \   },
+      \   "spec/requests/*_spec.rb": {
+      \      "command": "request",
+      \      "alternate": "app/controllers/{}.rb"
+      \   },
+      \ }
 
 "#############################################################################
 " Autocommands
@@ -270,9 +284,14 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " Word wrap without line breaks for text files
 autocmd BufRead,BufNewFile *.txt,*.md,*.markdown,*.rdoc set wrap linebreak nolist textwidth=0 wrapmargin=0
 
+let g:vim_yaml_helper#always_get_root = 1
+let g:vim_yaml_helper#auto_display_path = 1
+
 " Syntax of these languages is fussy over tabs Vs spaces
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+au FileType gitcommit,gitrebase let g:gutentags_enabled=0
+au FileType .env,*.log,*.txt,*.rdoc,Gemfile,Gemfile.lock,*.json let g:gutentags_enabled=0
 
 " XML syntax
 autocmd BufNewFile,BufRead *.rss setfiletype xml
@@ -286,6 +305,7 @@ autocmd BufRead,BufNewFile *_spec.rb set syntax=ruby
 
 " JavaScript syntax
 autocmd BufRead,BufNewFile *.json set filetype=javascript
+
 
 " When viewing a git tree or blob, quickly move up to view parent
 autocmd User fugitive
