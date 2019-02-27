@@ -10,7 +10,7 @@ export EDITOR=nvim
 export JAVA_HOME=`/usr/libexec/java_home`
 export ENABLE_BOOTSNAP=1
 
-alias vim='nvim'
+[ -f ~/bin/aliases ] && source ~/bin/aliases
 
 if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
