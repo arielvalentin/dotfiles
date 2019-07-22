@@ -53,6 +53,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'janko-m/vim-test'
+Plug 'bswinnerton/vim-test-github'
 Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
@@ -254,22 +255,36 @@ map <F8> :TagbarToggle<CR>
 
 " Call the 'alternative' script
 " nnoremap <Leader>a <CR>
-let g:rails_projections = {
-      \  "app/controllers/*_controller.rb": {
-      \      "test": [
-      \        "spec/requests/{}_spec.rb",
-      \        "spec/controllers/{}_controller_spec.rb",
-      \      ],
-      \      "alternate": [
-      \        "spec/requests/{}_controller_spec.rb",
-      \        "spec/controllers/{}_controller_spec.rb",
-      \      ],
-      \   },
-      \   "spec/requests/*_spec.rb": {
-      \      "command": "request",
-      \      "alternate": "app/controllers/{}.rb"
-      \   },
-      \ }
+" let g:rails_projections = {
+      " \  "app/controllers/*_controller.rb": {
+      " \      "test": [
+      " \        "test/requests/{}_spec.rb",
+      " \        "test/controllers/{}_spec.rb",
+      " \        "test/integration/{}_spec.rb",
+      " \        "spec/requests/{}_spec.rb",
+      " \        "spec/controllers/{}_controller_spec.rb",
+      " \      ],
+      " \      "alternate": [
+      " \        "test/requests/{}_spec.rb",
+      " \        "test/controllers/{}_spec.rb",
+      " \        "test/integration/{}_spec.rb",
+      " \        "spec/requests/{}_controller_spec.rb",
+      " \        "spec/controllers/{}_controller_spec.rb",
+      " \      ],
+      " \   },
+      " \   "spec/requests/*_spec.rb": {
+      " \      "command": "request",
+      " \      "alternate": "app/controllers/{}.rb"
+      " \   },
+      " \   "test/requests/*_spec.rb": {
+      " \      "command": "request",
+      " \      "alternate": "app/controllers/{}.rb"
+      " \   },
+      " \   "test/integration/*_spec.rb": {
+      " \      "command": "integration",
+      " \      "alternate": "app/controllers/{}.rb"
+      " \   },
+      " \ }
 
 "#############################################################################
 " Autocommands
@@ -316,12 +331,13 @@ autocmd User fugitive
 " Auto-clean fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
+let test#runners = {'Ruby': ['GitHub']}
+
 let test#strategy = "dispatch"
-nmap <silent> <CR><CR> :TestNearest<CR>
-nmap <silent> tf :TestFile<CR>
-nmap <silent> ts :TestSuite<CR>
-nmap <silent> tl :TestLast<CR>
-nmap <silent> tg :TestVisit<CR>
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
 
 " Strip trailing whitespace for code files on save
 function! StripTrailingWhitespace()

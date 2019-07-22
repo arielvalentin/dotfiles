@@ -1,4 +1,4 @@
 alias vim='nvim'
 alias ll='ls -alh'
-alias mono="cd $HOME/repos/github"
-alias sync="cd $HOME/repos/group-syncer"
+alias mono="cd $HOME/github/github"
+alias sync="cd $HOME/github/group-syncer"
