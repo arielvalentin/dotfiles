@@ -36,6 +36,8 @@ Plug 'tpope/vim-repeat'                           " Enable repeating supported p
 Plug 'tpope/vim-surround'                         " makes working w/ quotes, braces,etc. easier
 Plug 'tpope/vim-unimpaired'                       " pairs of handy bracket mappings
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-pathogen'
 Plug 'sheerun/vim-polyglot'                       " Provides plugins for multiple dynamic syntax highlighters
 Plug 'vim-scripts/regreplop.vim'                  " operator to replace motion/visual with a register
 Plug '907th/vim-auto-save'                  " automatically save changes to disk
@@ -54,10 +56,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'janko-m/vim-test'
 Plug 'bswinnerton/vim-test-github'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
+Plug 'universal-ctags/ctags'
+Plug 'craigemery/vim-autotag'
 
 call plug#end()
 
+execute pathogen#infect()
 
 "#############################################################################
 " Settings
@@ -182,6 +187,7 @@ map \| :NERDTreeFind<CR>
 "
 nnoremap <Leader>f :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
+let g:fzf_tags_command = 'ctags'
 
 " split pane shortcut
 " nnoremap <Leader>v :vs<cr>
@@ -250,41 +256,7 @@ map <F2> :set paste!<CR>
 " Toggle TagBar
 map <F8> :TagbarToggle<CR>
 
-" Regenerate ctags and cscope.out using starscope gem
-" map <F9> :StarscopeUpdate<cr>
-
-" Call the 'alternative' script
-" nnoremap <Leader>a <CR>
-" let g:rails_projections = {
-      " \  "app/controllers/*_controller.rb": {
-      " \      "test": [
-      " \        "test/requests/{}_spec.rb",
-      " \        "test/controllers/{}_spec.rb",
-      " \        "test/integration/{}_spec.rb",
-      " \        "spec/requests/{}_spec.rb",
-      " \        "spec/controllers/{}_controller_spec.rb",
-      " \      ],
-      " \      "alternate": [
-      " \        "test/requests/{}_spec.rb",
-      " \        "test/controllers/{}_spec.rb",
-      " \        "test/integration/{}_spec.rb",
-      " \        "spec/requests/{}_controller_spec.rb",
-      " \        "spec/controllers/{}_controller_spec.rb",
-      " \      ],
-      " \   },
-      " \   "spec/requests/*_spec.rb": {
-      " \      "command": "request",
-      " \      "alternate": "app/controllers/{}.rb"
-      " \   },
-      " \   "test/requests/*_spec.rb": {
-      " \      "command": "request",
-      " \      "alternate": "app/controllers/{}.rb"
-      " \   },
-      " \   "test/integration/*_spec.rb": {
-      " \      "command": "integration",
-      " \      "alternate": "app/controllers/{}.rb"
-      " \   },
-      " \ }
+let g:rails_ctags_arguments = ['']
 
 "#############################################################################
 " Autocommands
@@ -305,8 +277,8 @@ let g:vim_yaml_helper#auto_display_path = 1
 " Syntax of these languages is fussy over tabs Vs spaces
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-au FileType gitcommit,gitrebase let g:gutentags_enabled=0
-au FileType .env,*.log,*.txt,*.rdoc,Gemfile,Gemfile.lock,*.json let g:gutentags_enabled=0
+au FileType gitcommit,gitrebase " let g:gutentags_enabled=0
+au FileType .env,*.log,*.txt,*.rdoc,Gemfile,Gemfile.lock,*.json,Dockerfile,*.md,*.html " let g:gutentags_enabled=0
 
 " XML syntax
 autocmd BufNewFile,BufRead *.rss setfiletype xml
@@ -317,10 +289,12 @@ autocmd BufRead,BufNewFile *.god set filetype=ruby
 autocmd BufRead,BufNewFile Gemfile set filetype=ruby
 autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 autocmd BufRead,BufNewFile *_spec.rb set syntax=ruby
+autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
+      \ pathogen#split(&tags) +
+      \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
 
 " JavaScript syntax
 autocmd BufRead,BufNewFile *.json set filetype=javascript
-
 
 " When viewing a git tree or blob, quickly move up to view parent
 autocmd User fugitive
@@ -346,3 +320,4 @@ function! StripTrailingWhitespace()
   call setpos('.', save_cursor)
 endfunction
 autocmd BufWritePre *.rake,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
+

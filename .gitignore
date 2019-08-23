@@ -5,3 +5,5 @@ elpa
 .smex-items
 places
 plugged
+zshrc.local
+*.old

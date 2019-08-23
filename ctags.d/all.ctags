@@ -1,0 +1,36 @@
+--exclude=.git
+--exclude=.svn
+--exclude=.hg
+--exclude=log
+--exclude=*.min.js
+--exclude=jquery.*.js
+--exclude=jquery-*.js
+--exclude=tags
+--exclude=*.gem
+--exclude=*.conf
+--exclude=\*.min.\*
+--exclude=\*.map
+--exclude=\*.swp
+--exclude=\*.bak
+--exclude=\*.pyc
+--exclude=\*.class
+--exclude=\*.sln
+--exclude=\*.Master
+--exclude=\*.csproj
+--exclude=\*.csproj.user
+--exclude=\*.cache
+--exclude=\*.dll
+--exclude=\*.pdb
+--exclude=\*.tar.\*
+--exclude=tmp
+
+--languages=-html,sql
+
+--recurse=yes
+--totals=yes
+
+--tag-relative=yes
+--regex-ruby=/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/
+--regex-ruby=/^[ \t]*attr_(reader|writer|accessor) (:[a-z0-9_]+, )*:([a-z0-9_]+)/\3/A,attr/
+
+--sort=no

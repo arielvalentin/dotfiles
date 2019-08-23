@@ -72,7 +72,7 @@ yarn-debug.log*
 !/storage/.keep
 
 ### Ruby ###
-*.gem
+# *.gem
 /.config
 /InstalledFiles
 /pkg/

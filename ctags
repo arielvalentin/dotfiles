@@ -1,7 +1,0 @@
---exclude=.git
---exclude=log
---exclude=*.min.js
---exclude=jquery.*.js
---exclude=jquery-*.js
---exclude=tags
---languages=-html,sql
