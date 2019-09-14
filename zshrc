@@ -16,6 +16,5 @@ export ENABLE_BOOTSNAP=1
 [ -f $HOME/bin/zshrc.local ] && source $HOME/bin/zshrc.local
 [ -f $HOME/bin/aliases.sh ] && source $HOME/bin/aliases.sh
 [ -f $HOME/bin/fzf.sh ] && source $HOME/bin/fzf.sh
-[ -f $HOME/bin/aliases.sh ] && source $HOME/bin/aliases.sh
 
 eval "$(rbenv init -)"

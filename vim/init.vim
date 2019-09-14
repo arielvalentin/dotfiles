@@ -11,7 +11,7 @@ execute pathogen#infect()
 "#############################################################################
 set autoread                                    " Detect file changes refresh buffer
 set backspace=indent,eol,start                  " Backspace of newlines
-set colorcolumn=79                              " Show vertical column
+set colorcolumn=120                              " Show vertical column
 set cursorline                                  " Highlight current line
 
 " Set tabs to 2 spaces
@@ -69,6 +69,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 " Limelight is unable to calculate colors in iTerm2 with Solarized. https://github.com/junegunn/limelight.vim/issues/27
 " This configuration gives limelight some clues
@@ -261,5 +262,5 @@ function! StripTrailingWhitespace()
   %s/\s\+$//e
   call setpos('.', save_cursor)
 endfunction
-autocmd BufWritePre *.rake,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature call StripTrailingWhitespace()
 
+autocmd BufWritePre *.rake,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature,*.md call StripTrailingWhitespace()
