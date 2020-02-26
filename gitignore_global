@@ -35,7 +35,7 @@ config/master.key
 
 ## Environment normalization:
 /.bundle
-/vendor/bundle
+vendor/bundler
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset
@@ -122,3 +122,5 @@ build-iPhoneSimulator/
 # End of https://www.gitignore.io/api/ruby,rails
 
 projections.json
+.overmind.env
+.envrc

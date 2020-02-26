@@ -4,7 +4,7 @@ Plug 'AndrewRadev/writable_search.vim'            " Grep for something, then wri
 Plug 'DataWraith/auto_mkdir'                      " Allows you to save files into directories that do not exist yet
 Plug 'MarcWeber/vim-addon-mw-utils'               " vim-snipmate dependency
 Plug 'airblade/vim-gitgutter'                     " shows a git diff in the gutter (sign column) and stages/reverts hunks
-Plug 'altercation/vim-colors-solarized'           " Solarized color theme
+Plug 'lifepillar/vim-solarized8'                      " Solarized color theme
 Plug 'bling/vim-airline'                          " lean & mean status/tabline for vim that's light as air
 Plug 'chazy/cscope_maps'                          " cscope keyboard mappings
 Plug 'chrisbra/csv.vim'                           " Filetype plugin for csv files
@@ -38,7 +38,7 @@ Plug 'vim-scripts/regreplop.vim'                  " operator to replace motion/v
 Plug '907th/vim-auto-save'                  " automatically save changes to disk
 Plug 'lmeijvogel/vim-yaml-helper'                 " navigate yaml files more easily
 Plug 'aperezdc/vim-template'                      " templates by file type
-Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete intellisense
 Plug 'wokalski/autocomplete-flow'
 " For func argument completion

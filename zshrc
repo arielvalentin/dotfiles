@@ -1,3 +1,5 @@
+unsetopt nomatch
+
 export PATH="$(brew --prefix)/bin:$PATH"
 export PATH="$(brew --prefix)/sbin:$PATH"
 export PATH="$(brew --prefix)/opt/mysql@5.7/bin:$PATH"
@@ -18,3 +20,4 @@ export ENABLE_BOOTSNAP=1
 [ -f $HOME/bin/fzf.sh ] && source $HOME/bin/fzf.sh
 
 eval "$(rbenv init -)"
+

@@ -1,4 +1,4 @@
-"  ############################################################################
+" ############################################################################
 " Install / load plugins
 "#############################################################################
 
@@ -46,30 +46,30 @@ set wildignore+=vendor/**
 set nowrap                                        " Turn off line wrapping
 
 set rtp+=/usr/local/opt/fzf
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 "#############################################################################
 " Misc
 "#############################################################################
 
-set t_Co=256
 set encoding=utf-8
 syntax enable
-let g:solarized_termtrans = 1
-let g:solarized_termcolors=256
-let g:solarized_visibility="high"
-let g:solarized_contrast="high"
+set termguicolors
+
 set background=light
-colorscheme solarized
+colorscheme solarized8_high
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
 " Limelight is unable to calculate colors in iTerm2 with Solarized. https://github.com/junegunn/limelight.vim/issues/27
 " This configuration gives limelight some clues
@@ -89,6 +89,22 @@ let mapleader = ","
 " Plugin configuration
 "#############################################################################
 " let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = "◉"
+let g:ale_sign_warning = "◉"
+highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
+highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
+
+nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <Leader>j <Plug>(ale_next_wrap)
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+" Set this if you want to.
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+let g:ale_keep_list_window_open = 1
 
 let NERDSpaceDelims = 1
 let NERDTreeShowHidden=1
