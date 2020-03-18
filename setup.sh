@@ -24,3 +24,6 @@ echo "Update zshrc"
 echo "Configure nvim"
 
 (cd ~/ && mkdir -p ~/.config && ln -s bin/vim nvim)
+
+echo "Install Global Gems for VSCode"
+bundle install --system
