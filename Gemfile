@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-gem "debase"
+# gem "debase"
 gem "solargraph"
 gem "rails"
 gem "ruby-debug-ide"
