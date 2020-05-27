@@ -15,6 +15,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 tags
+tags.SAFE
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -124,3 +125,4 @@ build-iPhoneSimulator/
 projections.json
 .overmind.env
 .envrc
+.DS_Store
