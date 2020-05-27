@@ -8,3 +8,4 @@ plugged
 zshrc.local
 *.old
 github.ctags
+vendor
