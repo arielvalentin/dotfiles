@@ -25,5 +25,8 @@ echo "Configure nvim"
 
 (cd ~/ && mkdir -p ~/.config && ln -s bin/vim nvim)
 
+echo "Install npm dependencies"
+npm install -g prettier
+
 echo "Install Global Gems for VSCode"
 bundle install --system

@@ -15,6 +15,7 @@ Plug 'godlygeek/tabular'                          " dependency of vim-markdown
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'                         " vim-snipmate default snippets
 Plug 'kana/vim-textobj-user'                      " dependency for rubyblock
+Plug 'machakann/vim-highlightedyank'              " Highlights text in a file that was yanked into a register
 Plug 'nelstrom/vim-textobj-rubyblock'             " custom text object for selecting Ruby blocks
 Plug 'scrooloose/nerdcommenter'                   " quickly (un)comment lines
 Plug 'scrooloose/nerdtree'                        " A tree explorer plugin

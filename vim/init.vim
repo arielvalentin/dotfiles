@@ -23,6 +23,7 @@ set history=1024                                " History size
 set hlsearch                                    " Highlight matches to recent searches
 set ignorecase                                  " Ignore case when searching
 set incsearch                                   " Use incremental search
+set inccommand=split                            " Shows incremental preview of text you are trying to :substitute
 set laststatus=2                                " Use two rows for status line
 set nocompatible                                " Not compatible w/ vi
 set number                                      " Display line numbers
@@ -264,7 +265,7 @@ autocmd User fugitive
 " Auto-clean fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-let test#runners = {'Ruby': ['GitHub']}
+" let test#runners = {'Ruby': ['GitHub']}
 
 let test#strategy = "dispatch"
 nmap <silent> <leader>t :TestNearest<CR>
