@@ -10,20 +10,22 @@ echo "Install all homebrew dependencies"
 
 brew bundle
 
+pip3 install --user --upgrade pynvim
+
 echo "Lets write some shortcuts"
 
-(cd ~/ && ln -s bin/tmux.conf .tmux.conf &&
-  ln -s bin/gitignore_global .gitignore_global &&
-  ln -s bin/gitignore_global .ignore &&
-  ln -s bin/ctags.d .ctags.d)
+(cd ~/ && ln -sf dotfiles/tmux.conf .tmux.conf &&
+  ln -sf dotfiles/gitignore_global .gitignore_global &&
+  ln -sf dotfiles/gitignore_global .ignore &&
+  ln -sf dotfiles/ctags.d .ctags.d)
 
 echo "Update zshrc"
 
-(cd ~/ && echo "source $HOME/bin/zshrc" >> .zshrc)
+(cd ~/ && echo "source $HOME/dotfiles/zshrc" >> .zshrc)
 
 echo "Configure nvim"
 
-(cd ~/ && mkdir -p ~/.config && ln -s bin/vim nvim)
+(cd ~/ && mkdir -p ~/.config && ln -sf dotfiles/vim nvim)
 
 echo "Install npm dependencies"
 npm install -g prettier

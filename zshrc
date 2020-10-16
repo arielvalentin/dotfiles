@@ -21,9 +21,9 @@ export LDFLAGS="-L$(brew --prefix)/opt/icu4c/lib"
 export CPPFLAGS="-I$(brew --prefix)/opt/icu4c/include"
 export PKG_CONFIG_PATH="$(brew --prefix)/opt/icu4c/lib/pkgconfig"
 
-[ -f $HOME/bin/zshrc.local ] && source $HOME/bin/zshrc.local
-[ -f $HOME/bin/aliases.sh ] && source $HOME/bin/aliases.sh
-[ -f $HOME/bin/fzf.sh ] && source $HOME/bin/fzf.sh
+[ -f $HOME/dotfiles/zshrc.local ] && source $HOME/dotfiles/zshrc.local
+[ -f $HOME/dotfiles/aliases.sh ] && source $HOME/dotfiles/aliases.sh
+[ -f $HOME/dotfiles/fzf.sh ] && source $HOME/dotfiles/fzf.sh
 
 eval "$(rbenv init -)"
 

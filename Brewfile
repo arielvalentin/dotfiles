@@ -3,6 +3,7 @@ brew "direnv"
 brew "fzf"
 brew "jq"
 brew "glances"
+brew "python@3.9", link: true, conflicts_with: ["python3"]
 brew "neovim"
 brew "the_silver_searcher"
 brew "tmux"
