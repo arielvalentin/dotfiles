@@ -148,6 +148,10 @@ map \| :NERDTreeFind<CR>
 nnoremap <Leader>f :FZF<cr>
 nnoremap <Leader>b :Buffers<cr>
 let g:fzf_tags_command = 'ctags'
+" let g:fzf_layout = { 'down': '40%' }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': 'botright new' }
+
 
 " split pane shortcut
 " nnoremap <Leader>v :vs<cr>

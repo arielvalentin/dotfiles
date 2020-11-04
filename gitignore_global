@@ -126,3 +126,4 @@ projections.json
 .overmind.env
 .envrc
 .DS_Store
+/.idea/
