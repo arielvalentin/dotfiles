@@ -6,6 +6,7 @@ export PATH="$(brew --prefix)/opt/mysql@5.7/bin:$PATH"
 export PATH="$(brew --prefix)/opt/gettext/bin:$PATH"
 export PATH="$(brew --prefix)/opt/icu4c/bin:$PATH"
 export PATH="$(brew --prefix)/opt/icu4c/sbin:$PATH"
+export PATH="$(brew --prefix)/gnu-getopt/bin:$PATH"
 export PATH="$HOME/software/bin:$PATH"
 
 export GOPATH="$HOME/go"
