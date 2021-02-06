@@ -56,7 +56,7 @@ set rtp+=/usr/local/opt/fzf
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 "#############################################################################
 " Misc
@@ -69,6 +69,7 @@ set termguicolors
 set background=light
 colorscheme solarized8_high
 
+let g:python3_host_prog = '/usr/local/bin/python3'
 set statusline+=%#warningmsg#
 set statusline+=%*
 
@@ -83,6 +84,7 @@ runtime macros/matchit.vim
 filetype on
 filetype plugin on
 filetype plugin indent on
+filetype indent on
 let mapleader = ","
 " let maplocalleader = ";"
 
@@ -91,7 +93,12 @@ let mapleader = ","
 "#############################################################################
 " let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace']
+\}
 let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+let g:ale_keep_list_window_open = 1
 let g:ale_sign_error = "◉"
 let g:ale_sign_warning = "◉"
 highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
@@ -101,11 +108,9 @@ nmap <silent> <Leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <Leader>j <Plug>(ale_next_wrap)
 " let g:ale_set_loclist = 0
 " let g:ale_set_quickfix = 1
-let g:ale_open_list = 1
 " Set this if you want to.
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
-let g:ale_keep_list_window_open = 1
 
 let NERDSpaceDelims = 1
 let NERDTreeShowHidden=1
@@ -119,7 +124,7 @@ let g:templates_directory = "~/.config/nvim/templates/"
 
 let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:snipMate = {'snippet_version': 1}
 
 "#############################################################################
 " Keymaps
@@ -145,7 +150,7 @@ map \| :NERDTreeFind<CR>
 " noremap ,a :Ag<CR>
 
 "
-nnoremap <Leader>f :FZF<cr>
+nnoremap <Leader>f :Files<cr>
 nnoremap <Leader>b :Buffers<cr>
 let g:fzf_tags_command = 'ctags'
 " let g:fzf_layout = { 'down': '40%' }
@@ -167,7 +172,7 @@ map <leader>qc :cclose<CR>
 vmap <tab> >gv
 vmap <s-tab> <gv
 
-" ctags again 
+" ctags again
 " map <leader>rt :Dispatch ctags -R * <CR>
 
 " Comment/uncomment lines
@@ -189,11 +194,11 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>""
 " Auto-indent whole file
 nmap <leader>=  gg=G``
 
-" Show invisible chars 
+" Show invisible chars
 set list
 set listchars=tab:▸\ ,trail:.
 nmap <leader>l :set list!<CR>
-"Invisible character colors 
+"Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
@@ -257,6 +262,7 @@ autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
       \ pathogen#split(&tags) +
       \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
 
+
 " JavaScript syntax
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 
@@ -276,12 +282,3 @@ nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
 nmap <silent> <leader>l :TestLast<CR>
-
-" Strip trailing whitespace for code files on save
-function! StripTrailingWhitespace()
-  let save_cursor = getpos(".")
-  %s/\s\+$//e
-  call setpos('.', save_cursor)
-endfunction
-
-autocmd BufWritePre *.rake,*.rb,*.yml,*.js,*.css,*.less,*.sass,*.scss,*.html,*.xml,*.erb,*.haml,*.feature,*.md call StripTrailingWhitespace()
