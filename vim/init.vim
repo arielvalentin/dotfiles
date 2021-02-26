@@ -66,7 +66,7 @@ set encoding=utf-8
 syntax enable
 set termguicolors
 
-set background=light
+set background=dark
 colorscheme solarized8_high
 
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -253,11 +253,7 @@ au FileType .env,*.log,*.txt,*.rdoc,Gemfile,Gemfile.lock,*.json,Dockerfile,*.md,
 autocmd BufNewFile,BufRead *.rss setfiletype xml
 
 " Ruby syntax
-autocmd BufRead,BufNewFile *.thor set filetype=ruby
-autocmd BufRead,BufNewFile *.god set filetype=ruby
-autocmd BufRead,BufNewFile Gemfile set filetype=ruby
-autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-autocmd BufRead,BufNewFile *_spec.rb set syntax=ruby
+autocmd BufRead,BufNewFile *_spec.rb,*.thor,*.god,Gemfile,Vagrantfile set filetype=ruby
 autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
       \ pathogen#split(&tags) +
       \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
