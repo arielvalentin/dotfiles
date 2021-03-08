@@ -5,7 +5,7 @@ brew "jq"
 brew "glances"
 brew "python@3.9", link: true, conflicts_with: ["python3"]
 brew "neovim"
-brew "the_silver_searcher"
+brew "ripgrep"
 brew "tmux"
 brew "universal-ctags"
 brew "zsh"
