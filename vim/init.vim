@@ -146,15 +146,9 @@ map \ :NERDTreeToggle<CR>
 " File tree browser showing current file - pipe (shift-backslash)
 map \| :NERDTreeFind<CR>
 
-" Search using Ag
-" noremap ,a :Ag<CR>
-
-"
 nnoremap <Leader>f :Files<cr>
 nnoremap <Leader>b :Buffers<cr>
 let g:fzf_tags_command = 'ctags'
-" let g:fzf_layout = { 'down': '40%' }
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 let g:fzf_layout = { 'window': 'botright new' }
 
 
