@@ -28,7 +28,7 @@ export PKG_CONFIG_PATH="$(brew --prefix)/opt/icu4c/lib/pkgconfig"
 
 if command -v rbenv &> /dev/null
 then
-  echo "COMMAND could not be found"
   eval "$(rbenv init -)"
+else
+  echo "rbenv is not installed"
 fi
-
