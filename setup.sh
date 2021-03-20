@@ -26,3 +26,5 @@ echo "Update zshrc"
 echo "Configure nvim"
 
 (cd ~/ && mkdir -p ~/.config && cd ~/.config && ln -sf ~/.dotfiles/vim nvim)
+
+nvim --headless +PlugInstall +qall
