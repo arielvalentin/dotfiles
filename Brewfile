@@ -1,11 +1,9 @@
 brew "adr-tools"
 brew "direnv"
 brew "fzf"
-brew "jq"
 brew "glances"
-brew "python@3.9", link: true, conflicts_with: ["python3"]
+brew "jq"
 brew "neovim"
+brew "python@3.9", link: true, conflicts_with: ["python3"]
 brew "ripgrep"
 brew "tmux"
-brew "universal-ctags"
-brew "zsh"
