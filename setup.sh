@@ -8,7 +8,7 @@ defaults write com.apple.Finder AppleShowAllFiles true && killall Finder
 
 echo "Install all homebrew dependencies"
 
-(brew bundle && brew install --HEAD universal-ctags/universal-ctags/universal-ctags)
+# (brew bundle && brew install --HEAD universal-ctags/universal-ctags/universal-ctags)
 
 echo "Set FZF"
 
