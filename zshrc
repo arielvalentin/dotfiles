@@ -1,4 +1,5 @@
 unsetopt nomatch
+bindkey -e
 
 export PATH="$(brew --prefix)/bin:$PATH"
 export PATH="$(brew --prefix)/sbin:$PATH"
