@@ -10,6 +10,10 @@ echo "Install all homebrew dependencies"
 
 (brew bundle && brew install --HEAD universal-ctags/universal-ctags/universal-ctags)
 
+echo "Set FZF"
+
+$(brew --prefix)/opt/fzf/install
+
 pip3 install --user --upgrade pynvim
 
 echo "Lets write some shortcuts"
