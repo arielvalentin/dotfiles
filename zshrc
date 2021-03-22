@@ -33,3 +33,11 @@ then
 else
   echo "rbenv is not installed"
 fi
+
+# https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+if [ -f $HOME/.git-prompt.sh ]
+then
+  export GIT_PS1_SHOWCOLORHINTS=true
+  source $HOME/.git-prompt.sh
+  setopt PROMPT_SUBST ; PS1='%n@%m %c$(__git_ps1 " (%s)")\$ '
+fi
