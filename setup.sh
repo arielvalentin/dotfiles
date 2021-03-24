@@ -32,3 +32,6 @@ echo "Configure nvim"
 (cd ~/ && mkdir -p ~/.config && cd ~/.config && ln -sf ~/.dotfiles/vim nvim)
 
 nvim --headless +PlugInstall +qall
+
+echo "Configure gnupg"
+(cd ~/.gnupg && ln -sf $HOME/.dotfiles/gpg-agent.conf gpg-agent.conf)
