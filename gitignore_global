@@ -122,7 +122,7 @@ build-iPhoneSimulator/
 
 # End of https://www.gitignore.io/api/ruby,rails
 
-projections.json
+.projections.json
 .overmind.env
 .envrc
 .DS_Store

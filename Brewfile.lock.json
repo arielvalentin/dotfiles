@@ -339,6 +339,10 @@
             }
           }
         }
+      },
+      "zsh-git-prompt": {
+        "version": "0.5",
+        "bottle": false
       }
     },
     "tap": {
@@ -350,11 +354,11 @@
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "3.0.7-44-g7e2ba95",
+        "HOMEBREW_VERSION": "3.0.8",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "9d7d6a102e6a135a18fc71fdfdbf0058b0ed15e4",
+        "Homebrew/homebrew-core": "27a8b32cfc4eddab12f6fdf8c667c30f5a9df50f",
         "CLT": "12.0.32.29",
-        "Xcode": "12.0",
+        "Xcode": "12.4",
         "macOS": "10.15.7"
       }
     }
