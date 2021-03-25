@@ -34,6 +34,13 @@ else
   echo "rbenv is not installed"
 fi
 
+if command -v direnv &> /dev/null
+then
+  eval "$(direnv hook zsh)"
+else
+  echo "direnv is not installed"
+fi
+
 new_line() {
     printf "\n\U1F918 "
 }
