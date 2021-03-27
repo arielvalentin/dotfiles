@@ -7,6 +7,7 @@ brew "glances"
 brew "gnupg" unless File.executable? "/usr/local/bin/gpg"
 brew "jq"
 brew "python@3.9", link: true, conflicts_with: ["python3"]
+brew "rbenv"
 brew "ripgrep"
 brew "tmux"
 brew "universal-ctags", args: ["HEAD"]

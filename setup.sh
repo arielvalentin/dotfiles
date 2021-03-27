@@ -9,6 +9,7 @@ defaults write com.apple.Finder AppleShowAllFiles true && killall Finder
 echo "Install all homebrew dependencies"
 
 # (brew bundle && brew install --HEAD universal-ctags/universal-ctags/universal-ctags)
+brew bundle
 
 echo "Set FZF"
 
@@ -26,6 +27,10 @@ echo "Lets write some shortcuts"
 echo "Update zshrc"
 
 (cd ~/ && echo "source $HOME/.dotfiles/zshrc" >> .zshrc)
+
+echo "Install ruby dependencies"
+
+./setup/rbenv.sh
 
 echo "Configure nvim"
 
