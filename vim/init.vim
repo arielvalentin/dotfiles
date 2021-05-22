@@ -247,7 +247,7 @@ au FileType .env,*.log,*.txt,*.rdoc,Gemfile,Gemfile.lock,*.json,Dockerfile,*.md,
 autocmd BufNewFile,BufRead *.rss setfiletype xml
 
 " Ruby syntax
-autocmd BufRead,BufNewFile *_spec.rb,*.thor,*.god,Gemfile,Vagrantfile set filetype=ruby
+autocmd BufRead,BufNewFile *_spec.rb,*.thor,*.god,Gemfile,Vagrantfile,Appraisal set filetype=ruby
 autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
       \ pathogen#split(&tags) +
       \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))

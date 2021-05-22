@@ -15,3 +15,5 @@ git clone git://github.com/tpope/rbenv-ctags.git $(rbenv root)/plugins/rbenv-cta
 rbenv install --global 2.7.2
 
 rbenv ctags
+
+# bundle config --global build.mysql2 --with-mysql-dir="$(brew --prefix mysql@5.7) --with-openssl-dir=$(brew --prefix openssl@1.1)"

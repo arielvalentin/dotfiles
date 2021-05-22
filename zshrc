@@ -26,6 +26,8 @@ export PKG_CONFIG_PATH="$(brew --prefix)/opt/icu4c/lib/pkgconfig"
 [ -f $HOME/.dotfiles/zshrc.local ] && source $HOME/.dotfiles/zshrc.local
 [ -f $HOME/.dotfiles/aliases.sh ] && source $HOME/.dotfiles/aliases.sh
 [ -f $HOME/.dotfiles/fzf.sh ] && source $HOME/.dotfiles/fzf.sh
+[ -f $HOME/.dotfiles/git-contrib.sh ] && source $HOME/.dotfiles/git-contrib.sh
+
 
 if command -v rbenv &> /dev/null
 then
@@ -46,3 +48,10 @@ new_line() {
 }
 [ -f "$(brew --prefix)/opt/zsh-git-prompt/zshrc.sh" ] && source "$(brew --prefix)/opt/zsh-git-prompt/zshrc.sh"
 PROMPT='%B%m %~%b$(git_super_status) %# $(new_line)'
+
+function get_github_token {
+  printf "protocol=https\nhost=github.com\n" \
+    | git credential-osxkeychain get \
+    | awk 'BEGIN { FS = "=" }; $1 ~ /password/ { print $2 }' | tr -d '\n\r'
+}
+export GITHUB_AUTH_TOKEN=$(get_github_token)
