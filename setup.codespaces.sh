@@ -15,3 +15,5 @@ for file in tmux.conf gitignore_global ctags.d irbrc zshrc; do
 done
 
 (cd $HOME && ln -sf .gitignore_global .ignore)
+
+git config --global commit.gpgsign true
