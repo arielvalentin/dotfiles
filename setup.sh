@@ -3,7 +3,7 @@
 set -ex
 
 if [ -z "$CODESPACES" ]; then
-  source ./setup.codespaces.sh
+  source setup.osx.sh
 else
-  source ./setup.osx.sh
+  source setup.codespaces.sh
 fi
