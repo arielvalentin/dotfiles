@@ -1,9 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 exec > >(tee -i $HOME/creation.log)
 exec 2>&1
-
-set -ex
+set -xe
 
 apt-get install universal-ctags direnv jq ripgrep zsh-git-prompt fzf
 
