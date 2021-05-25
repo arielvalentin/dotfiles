@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/bin/zsh
 
-exec > >(tee -i $HOME/creation.log)
-exec 2>&1
 set -xe
 
-apt-get install universal-ctags direnv jq ripgrep zsh-git-prompt fzf
+sudo apt-get install universal-ctags direnv jq ripgrep fzf
 
 current_dir=$(pwd)
 ln -sf $current_dir/.dotfiles/$file $HOME/.dotfiles
@@ -15,4 +13,4 @@ done
 
 (cd $HOME && ln -sf .gitignore_global .ignore)
 
-git config --global commit.gpgsign true
+# git config --global commit.gpgsign true
