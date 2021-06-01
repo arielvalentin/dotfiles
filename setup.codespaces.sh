@@ -2,7 +2,7 @@
 
 set -xe
 
-sudo apt-get install universal-ctags direnv jq ripgrep fzf
+sudo apt-get install -y universal-ctags direnv jq ripgrep fzf
 
 current_dir=$(pwd)
 ln -sf $current_dir $HOME/.dotfiles
