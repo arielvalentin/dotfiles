@@ -13,4 +13,7 @@ done
 
 (cd $HOME && ln -sf .gitignore_global .ignore)
 
+export EDITOR=vim
+export GIT_EDITOR=vim
+
 git config --global commit.gpgsign true
