@@ -13,4 +13,4 @@ done
 
 (cd $HOME && ln -sf .gitignore_global .ignore)
 
-# git config --global commit.gpgsign true
+git config --global commit.gpgsign true
