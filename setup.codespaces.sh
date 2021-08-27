@@ -2,7 +2,10 @@
 
 set -xe
 
-sudo apt-get install -y universal-ctags direnv jq ripgrep fzf
+export DEBIAN_FRONTEND=noninteractive
+
+sudo apt-get update
+sudo apt-get -y install zsh-autosuggestions universal-ctags direnv jq ripgrep fzf
 
 current_dir=$(pwd)
 ln -sf $current_dir $HOME/.dotfiles
