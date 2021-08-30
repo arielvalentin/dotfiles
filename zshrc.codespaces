@@ -6,24 +6,9 @@ export GIT_EDITOR=vim
 export EDITOR=vim
 export ENABLE_BOOTSNAP=1
 
+plugins=(direnv git-prompt fzf ripgrep)
+
 [ -f $HOME/.dotfiles/zshrc.local ] && source $HOME/.dotfiles/zshrc.local
 [ -f $HOME/.dotfiles/aliases.sh ] && source $HOME/.dotfiles/aliases.sh
 [ -f $HOME/.dotfiles/fzf.sh ] && source $HOME/.dotfiles/fzf.sh
 [ -f $HOME/.dotfiles/git-contrib.sh ] && source $HOME/.dotfiles/git-contrib.sh
-
-if command -v direnv &> /dev/null
-then
-  eval "$(direnv hook zsh)"
-else
-  echo "direnv is not installed"
-fi
-
-new_line() {
-    printf "\n\U1F918 "
-}
-if [ -f "/opt/zsh-git-prompt/zshrc.sh" ]; then
-  source "/opt/zsh-git-prompt/zshrc.sh"
-  PROMPT='%B%m %~%b$(git_super_status) %# $(new_line)'
-else
-  echo "zsh-git-prompt not installed"
-fi
