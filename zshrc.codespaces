@@ -1,3 +1,5 @@
+plugins=(direnv git-prompt fzf ripgrep)
+
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$PATH:./bin"
@@ -5,8 +7,8 @@ export PATH="$PATH:./bin"
 export GIT_EDITOR=vim
 export EDITOR=vim
 export ENABLE_BOOTSNAP=1
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-plugins=(direnv git-prompt fzf ripgrep)
 
 [ -f $HOME/.dotfiles/zshrc.local ] && source $HOME/.dotfiles/zshrc.local
 [ -f $HOME/.dotfiles/aliases.sh ] && source $HOME/.dotfiles/aliases.sh
