@@ -21,5 +21,9 @@ fi
 new_line() {
     printf "\n\U1F918 "
 }
-[ -f "/opt/zsh-git-prompt/zshrc.sh" ] && source "/opt/zsh-git-prompt/zshrc.sh"
-PROMPT='%B%m %~%b$(git_super_status) %# $(new_line)'
+if [ -f "/opt/zsh-git-prompt/zshrc.sh" ]; then
+  source "/opt/zsh-git-prompt/zshrc.sh"
+  PROMPT='%B%m %~%b$(git_super_status) %# $(new_line)'
+else
+  echo "zsh-git-prompt not installed"
+fi
