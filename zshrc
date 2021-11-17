@@ -18,7 +18,7 @@ export PATH="$PATH:./bin"
 export GIT_EDITOR=vim
 export EDITOR=nvim
 export JAVA_HOME=`/usr/libexec/java_home`
-export ENABLE_BOOTSNAP=1
+# export ENABLE_BOOTSNAP=1
 
 export LDFLAGS="-L$(brew --prefix)/opt/icu4c/lib"
 export CPPFLAGS="-I$(brew --prefix)/opt/icu4c/include"
