@@ -66,9 +66,6 @@ set encoding=utf-8
 syntax enable
 set termguicolors
 
-set background=dark
-colorscheme solarized8_high
-
 let g:python3_host_prog = '/usr/local/bin/python3'
 set statusline+=%#warningmsg#
 set statusline+=%*

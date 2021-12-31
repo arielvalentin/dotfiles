@@ -12,7 +12,7 @@ git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/
 
 git clone git://github.com/tpope/rbenv-ctags.git $(rbenv root)/plugins/rbenv-ctags
 
-rbenv install --global 2.7.2
+rbenv global 3.1.0
 
 rbenv ctags
 

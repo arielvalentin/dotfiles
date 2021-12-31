@@ -4,7 +4,6 @@ Plug 'AndrewRadev/writable_search.vim'            " Grep for something, then wri
 Plug 'DataWraith/auto_mkdir'                      " Allows you to save files into directories that do not exist yet
 Plug 'MarcWeber/vim-addon-mw-utils'               " vim-snipmate dependency
 Plug 'airblade/vim-gitgutter'                     " shows a git diff in the gutter (sign column) and stages/reverts hunks
-Plug 'lifepillar/vim-solarized8'                      " Solarized color theme
 Plug 'bling/vim-airline'                          " lean & mean status/tabline for vim that's light as air
 Plug 'chazy/cscope_maps'                          " cscope keyboard mappings
 Plug 'chrisbra/csv.vim'                           " Filetype plugin for csv files
