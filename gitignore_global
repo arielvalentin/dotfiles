@@ -15,6 +15,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 tags
+/**/*/tags
 tags.SAFE
 
 # Ignore all logfiles and tempfiles.

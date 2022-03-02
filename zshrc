@@ -8,7 +8,7 @@ export PATH="$(brew --prefix)/opt/gettext/bin:$PATH"
 export PATH="$(brew --prefix)/opt/icu4c/bin:$PATH"
 export PATH="$(brew --prefix)/opt/icu4c/sbin:$PATH"
 export PATH="$(brew --prefix)/gnu-getopt/bin:$PATH"
-export PATH="$(brew --prefix)/openjdk/bin:$PATH"
+export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
 export PATH="$HOME/software/bin:$PATH"
 
 export GOPATH="$HOME/go"
@@ -17,7 +17,7 @@ export PATH="$PATH:./bin"
 
 export GIT_EDITOR=vim
 export EDITOR=nvim
-export JAVA_HOME=`/usr/libexec/java_home`
+[ -d $(brew --prefix)/opt/openjdk ] && export JAVA_HOME=$(brew --prefix)/opt/openjdk
 # export ENABLE_BOOTSNAP=1
 
 export LDFLAGS="-L$(brew --prefix)/opt/icu4c/lib"
