@@ -8,7 +8,7 @@ export GIT_EDITOR=vim
 export EDITOR=vim
 export ENABLE_BOOTSNAP=1
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="${GITHUB_USER}:${GPR_TOKEN}"
+export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="${GITHUB_USER}:${GITHUB_TOKEN}"
 
 
 [ -f $HOME/.dotfiles/zshrc.local ] && source $HOME/.dotfiles/zshrc.local
