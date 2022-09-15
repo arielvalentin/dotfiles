@@ -19,3 +19,4 @@ ln -sf $HOME/.dotfiles/zshrc.codespaces $HOME/.zshrc
 (cd $HOME && ln -sf .gitignore_global .ignore)
 
 git config --global commit.gpgsign true
+git config --global push.autoSetupRemote true
