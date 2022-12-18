@@ -8,6 +8,7 @@ brew "gnupg" unless File.executable? "/usr/local/bin/gpg"
 brew "jq"
 brew "python@3.9", link: true, conflicts_with: ["python3"]
 brew "reattach-to-user-namespace"
+brew "ruby-build"
 brew "rbenv"
 brew "ripgrep"
 brew "tmux"

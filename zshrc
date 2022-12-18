@@ -56,3 +56,6 @@ function get_github_token {
     | awk 'BEGIN { FS = "=" }; $1 ~ /password/ { print $2 }' | tr -d '\n\r'
 }
 export GITHUB_AUTH_TOKEN=$(get_github_token)
+export GITHUB_TOKEN=$GITHUB_AUTH_TOKEN
+export GITHUB_USER=arielvalentin
+export GITHUB_ACTOR=$GITHUB_USER

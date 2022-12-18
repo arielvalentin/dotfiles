@@ -1,19 +1,23 @@
-#! /bin/sh
+#! /bin/zsh
 
-set -e
+set -ex
 
 source ~/.dotfiles/profile.d/rbenv.sh
 
-(cd $(rbenv root) && ln -sf ~/.dotfiles/default-gems default-gems)
+[ ! -d ~/.dotfiles/default-gems ] && (cd $(rbenv root) && ln -sf ~/.dotfiles/default-gems default-gems)
 
-mkdir -p $(rbenv root)/plugins
+rbenv_plug_dir=$(rbenv root)/plugins
+mkdir -p $rbenv_plug_dir
 
-git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
+cd $rbenv_plug_dir
 
-git clone git://github.com/tpope/rbenv-ctags.git $(rbenv root)/plugins/rbenv-ctags
+[ ! -d rbenv-default-gems ] && git clone git@github.com:rbenv/rbenv-default-gems.git
+[ ! -d rbenv-ctags ] && git clone git@github.com:tpope/rbenv-ctags.git 
 
-rbenv global 3.1.0
+cd - 
+
+rbenv install -s 3.1.3
+rbenv global 3.1.3
 
 rbenv ctags
 
-# bundle config --global build.mysql2 --with-mysql-dir="$(brew --prefix mysql@5.7) --with-openssl-dir=$(brew --prefix openssl@1.1)"

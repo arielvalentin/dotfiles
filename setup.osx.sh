@@ -8,12 +8,11 @@ defaults write com.apple.Finder AppleShowAllFiles true && killall Finder
 
 echo "Install all homebrew dependencies"
 
-# (brew bundle && brew install --HEAD universal-ctags/universal-ctags/universal-ctags)
-brew bundle
+brew update && brew bundle
 
 echo "Set FZF"
 
-$(brew --prefix)/opt/fzf/install
+$(brew --prefix)/opt/fzf/install --all
 
 pip3 install --user --upgrade pynvim
 
