@@ -14,8 +14,6 @@ echo "Set FZF"
 
 $(brew --prefix)/opt/fzf/install --all
 
-pip3 install --user --upgrade pynvim
-
 echo "Lets write some shortcuts"
 
 (cd ~/ && ln -sf .dotfiles/tmux.conf .tmux.conf &&
@@ -33,9 +31,7 @@ echo "Install ruby dependencies"
 
 echo "Configure nvim"
 
-(cd ~/ && mkdir -p ~/.config && cd ~/.config && ln -sf ~/.dotfiles/vim nvim)
-
-nvim --headless +PlugInstall +qall
+./setup/nvim.sh
 
 echo "Configure gnupg"
 (cd ~/.gnupg && ln -sf $HOME/.dotfiles/gpg-agent.conf gpg-agent.conf)
