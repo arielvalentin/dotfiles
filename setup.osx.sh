@@ -8,7 +8,7 @@ defaults write com.apple.Finder AppleShowAllFiles true && killall Finder
 
 echo "Install all homebrew dependencies"
 
-brew update && brew bundle
+brew upgrade && brew update && brew bundle
 
 echo "Set FZF"
 

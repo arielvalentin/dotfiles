@@ -66,7 +66,7 @@ set encoding=utf-8
 syntax enable
 set termguicolors
 
-let g:python3_host_prog = '/usr/local/bin/python3'
+" let g:python3_host_prog = '/opt/homebrew/bin/python3'
 set statusline+=%#warningmsg#
 set statusline+=%*
 
@@ -119,7 +119,7 @@ au CursorHold,InsertLeave * nested update
 
 let g:templates_directory = "~/.config/nvim/templates/"
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
 let g:snipMate = {'snippet_version': 1}
 

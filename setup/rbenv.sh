@@ -19,5 +19,3 @@ cd -
 rbenv install -s 3.1.3
 rbenv global 3.1.3
 
-rbenv ctags
-
