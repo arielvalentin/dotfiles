@@ -23,7 +23,7 @@ echo "Lets write some shortcuts"
 
 echo "Update zshrc"
 
-(cd ~/ && echo "source $HOME/.dotfiles/zshrc" >> .zshrc)
+(cd $HOME && echo "source $HOME/dotfiles/zshrc" >> .zshrc)
 
 echo "Install ruby dependencies"
 
