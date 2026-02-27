@@ -7,6 +7,7 @@ brew "glances"
 brew "gnupg" unless File.executable? "/usr/local/bin/gpg"
 brew "jq"
 brew "python@3", link: true, conflicts_with: ["python3"]
+brew "pipx"
 brew "reattach-to-user-namespace"
 brew "ruby-build"
 brew "rbenv"
