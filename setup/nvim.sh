@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-#!/bin/zsh
 set -ex
 
 (cd ~/ && mkdir -p ~/.config && cd ~/.config && ln -sf ~/.dotfiles/vim . && mv vim nvim)

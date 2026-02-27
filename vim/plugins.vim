@@ -7,7 +7,7 @@ Plug 'airblade/vim-gitgutter'                     " shows a git diff in the gutt
 Plug 'bling/vim-airline'                          " lean & mean status/tabline for vim that's light as air
 Plug 'chazy/cscope_maps'                          " cscope keyboard mappings
 Plug 'chrisbra/csv.vim'                           " Filetype plugin for csv files
-Plug 'ervandew/supertab'                          " Perform all your vim insert mode completions with Tab
+" Plug 'ervandew/supertab'                          " Perform all your vim insert mode completions with Tab
 Plug 'garbas/vim-snipmate'                        " handy code snippets
 Plug 'godlygeek/csapprox'                         " dependency for Solarized
 Plug 'godlygeek/tabular'                          " dependency of vim-markdown
