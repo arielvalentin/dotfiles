@@ -4,5 +4,5 @@ set -ex
 
 source ~/.dotfiles/profile.d/rbenv.sh
 
-rbenv install -s 3.1.3
-rbenv global 3.1.3
+rbenv install -s 4.0.1
+rbenv global 4.0.1
