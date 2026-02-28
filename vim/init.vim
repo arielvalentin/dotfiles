@@ -66,7 +66,12 @@ set encoding=utf-8
 syntax enable
 set termguicolors
 
-let g:python3_host_prog = '/opt/homebrew/bin/python3'
+" let g:python3_host_prog = '/opt/homebrew/bin/python3'
+if has('nvim') && executable('pipx')
+  let s:py = system('pipx runpip pynvim python -c "import sys; print(sys.executable)"')
+  let g:python3_host_prog = substitute(s:py, '\n\+$', '', '')
+endif
+
 set statusline+=%#warningmsg#
 set statusline+=%*
 
