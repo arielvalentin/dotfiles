@@ -46,7 +46,11 @@ set wildignore+=public/images/**
 set wildignore+=vendor/**
 set nowrap                                        " Turn off line wrapping
 
-set rtp+=/usr/local/opt/fzf
+if isdirectory('/opt/homebrew/opt/fzf')
+  set rtp+=/opt/homebrew/opt/fzf
+elseif isdirectory('/usr/local/opt/fzf')
+  set rtp+=/usr/local/opt/fzf
+endif
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
